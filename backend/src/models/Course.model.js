@@ -13,10 +13,9 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
 
-    type: {
-      type: String,
-      enum: ["course", "documentation"],
-      required: true,
+    contentSummary: {
+      hasVideo: { type: Boolean, default: false },
+      hasDoc: { type: Boolean, default: false },
     },
 
     category: {
@@ -53,8 +52,14 @@ const courseSchema = new mongoose.Schema(
       default: "draft",
       index: true,
     },
+    
+    reviewFeedback: {
+      type: String,
+      default: "",
+    },
   },
-  { timestamps: true }
+
+  { timestamps: true },
 );
 
 const Course = mongoose.model("Course", courseSchema);

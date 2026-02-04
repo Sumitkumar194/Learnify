@@ -7,14 +7,14 @@ const lectureSchema = new mongoose.Schema(
       ref: "Section",
       required: true,
       index: true,
-    },  
+    },
 
     type: {
       type: String,
       enum: ["video", "doc"],
       required: true,
     },
-
+    
     title: {
       type: String,
       required: true,
@@ -36,7 +36,7 @@ const lectureSchema = new mongoose.Schema(
       default: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Lecture = mongoose.model("Lecture", lectureSchema);
