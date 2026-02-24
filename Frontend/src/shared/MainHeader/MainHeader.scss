@@ -1,0 +1,190 @@
+.main-header {
+  position: relative;
+  padding: clamp(0.55rem, 1vw, 0.95rem) clamp(0.75rem, 2vw, 1.5rem);
+  background-color: #ffffff;
+  backdrop-filter: blur(40px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Quicksand", sans-serif;
+
+  .left-container {
+    gap: clamp(0.85rem, 2vw, 2.25rem);
+  }
+
+  .input-container {
+    width: clamp(18rem, 34vw, 34rem);
+  }
+
+  .search-icon {
+    height: clamp(1rem, 1.1vw, 1.35rem);
+  }
+
+  .search-input,
+  .category-button,
+  .menu-list {
+    font-size: clamp(0.9rem, 1vw, 1.15rem);
+  }
+
+  .my-courses-icon {
+    height: clamp(1.4rem, 1.8vw, 2rem);
+  }
+
+  .wishlist-icon {
+    height: clamp(1rem, 1.3vw, 1.35rem);
+  }
+
+  .cart-icon {
+    height: clamp(1.15rem, 1.5vw, 1.65rem);
+  }
+
+  .profile-icon {
+    height: clamp(1.45rem, 2vw, 2.2rem);
+  }
+
+  .logo {
+    img {
+      object-fit: contain;
+      width: clamp(3.75rem, 8vw, 6.5rem);
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: #0f0f0f;
+    font-size: 1.125rem;
+    font-weight: 700;
+
+    img {
+      height: 1.2rem;
+      width: 1.2rem;
+      object-fit: contain;
+    }
+  }
+
+  .right-container {
+    .menu-list {
+      display: flex;
+      flex-direction: row;
+      gap: clamp(0.75rem, 1.8vw, 2rem);
+
+      li {
+        transition: all 0.3s ease;
+        &:hover {
+          color: #44CEE6;
+        }
+        display: flex;
+        align-items: center;
+        gap: clamp(0.3rem, 0.8vw, 0.6rem);
+      }
+    }
+  }
+}
+
+@media (max-width: 1275px) {
+  .main-header {
+    .left-container {
+      .input-container {
+        width: clamp(15rem, 28vw, 22rem);
+      }
+    }
+
+    .right-container {
+      .menu-list {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-header {
+    padding: 0.8rem 1rem;
+
+    .logo {
+      img {
+        width: 4rem;
+      }
+    }
+
+    .left-container {
+      .input-container {
+        display: none;
+      }
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .right-container {
+      position: static;
+
+      .my-courses-icon {
+        height: 1.5rem;
+      }
+
+      .wishlist-icon,
+      .cart-icon {
+        height: 1.2rem;
+      }
+
+      .profile-icon {
+        height: 1.6rem;
+      }
+
+      .menu-list {
+        position: absolute;
+        top: calc(100% + 0.4rem);
+        right: 1rem;
+        left: 1rem;
+        z-index: 20;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;
+        padding: 0.9rem 1rem;
+        border-radius: 0.8rem;
+        background: #ffffff;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+        font-size: 0.95rem;
+
+        li {
+          width: 100%;
+          font-size: inherit;
+          justify-content: space-between;
+        }
+      }
+
+      .menu-list.menu-open {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .main-header {
+    padding: 0.7rem 0.8rem;
+
+    .logo {
+      img {
+        width: 3rem;
+      }
+    }
+
+    .menu-toggle {
+      font-size: 1rem;
+    }
+
+    .right-container {
+      .menu-list {
+        left: 0.8rem;
+        right: 0.8rem;
+      }
+    }
+  }
+}
