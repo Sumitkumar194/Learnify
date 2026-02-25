@@ -1,39 +1,57 @@
 import './FirstPage.style.scss';
+import heroImage from "../../../assets/icons/heroImage.png";
 
 const FirstPage = () => {
   return (
-    <>
+    <section className="home-hero">
       <div className="main-container">
         <div className="left-container">
-          <h2>Learn without limits</h2>
+          <h1>Learn without limits</h1>
           <p>
-            Unlock your potential with our online learning platform. Access a
-            wide range of courses, expert instructors, and interactive content
-            to learn anytime, anywhere. Join our community of learners and start
-            your educational journey today!
+            Start, switch, or advance your career with more than 7,000 courses,
+            Professional Certificates, and degrees from world-class universities
+            and companies.
           </p>
 
           <div className="checks">
-            <h3>
-              <img src="/src/assets/icons/GreenSucces.svg" alt="Checkmark" />{" "}
-              <span>Expert intrunction</span> learn from industry leaders and
-              experienced practitioners
-            </h3>
-            <h3>
-              <img src="/src/assets/icons/GreenSucces.svg" alt="Checkmark" />{" "}
-              <span>Flexible learning:</span> Study at your own pace, on any
-              device, anytime
-            </h3>
-            <h3>
-              <img src="/src/assets/icons/GreenSucces.svg" alt="Checkmark" />{" "}
-              <span> Career advancement:</span> Earn certificates and
-              credentials to boost your resume
-            </h3>
+            <div className="check-item">
+              <span className="check-mark">✓</span>
+              <p><strong>Expert instruction:</strong> Learn from industry leaders and experienced practitioners</p>
+            </div>
+            <div className="check-item">
+              <span className="check-mark">✓</span>
+              <p><strong>Flexible learning:</strong> Study at your own pace, on any device, anytime</p>
+            </div>
+            <div className="check-item">
+              <span className="check-mark">✓</span>
+              <p><strong>Career advancement:</strong> Earn certificates and credentials to boost your resume</p>
+            </div>
+          </div>
+
+          <div className="cta-row">
+            <button type="button" className="primary-cta">Join for Free</button>
+            <button type="button" className="secondary-cta">Try Learnify Business</button>
           </div>
         </div>
-        <div className="right-container"></div>
+
+        <div className="right-container">
+          <img src={heroImage} alt="Student learning at home" className="hero-image" />
+          <div className="profile-card">
+            <div className="play-btn">▶</div>
+            <div className="profile-content">
+              <h3>Sarah Johnson</h3>
+              <p>Completed 12 courses</p>
+              <div className="certificates">
+                <span className="dot blue"></span>
+                <span className="dot yellow"></span>
+                <span className="dot green"></span>
+                <span className="cert-count">+5 certificates</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </section>
   );
 };
 
