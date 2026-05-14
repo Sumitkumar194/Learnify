@@ -31,8 +31,8 @@
 
   .certificate-chip {
     position: absolute;
-    top: -1.35rem;
-    left: -1.2rem;
+    top: .6rem;
+    left: .8rem;
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
@@ -389,11 +389,7 @@
 
 @media (max-width: 640px) {
   .signup-page {
-    .certificate-chip {
-      position: static;
-      margin-bottom: 0.8rem;
-      width: fit-content;
-    }
+    
 
     .feature-list {
       li {

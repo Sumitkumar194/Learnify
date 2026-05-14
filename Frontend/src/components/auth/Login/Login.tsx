@@ -5,6 +5,7 @@ import educationCapIcon from "../../../assets/icons/education-cap.svg";
 import googleIcon from "../../../assets/icons/google.svg";
 import React from "react";
 import axios from "axios";
+import LoaderOverlay from "../../../shared/LoaderOverlay/LoaderOverlay";
 
 function Login() {
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ function Login() {
   });
   const [error, setError] = React.useState(false);
   const [isSubmitPressed, setIsSubmitPressed] = React.useState(false);
-
+  const [loginError, setLoginError] = React.useState("");
+  const [loader, setLoader] = React.useState(false);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,7 +32,7 @@ function Login() {
     setLoginForm((prev) => ({ ...prev, [id]: value }));
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = emailRegex.test(loginForm.email.trim());
     const hasPassword = loginForm.password.trim() !== "";
@@ -40,28 +42,37 @@ function Login() {
     if (isEmailValid && hasPassword) {
       setIsSubmitPressed(true);
       setTimeout(() => setIsSubmitPressed(false), 180);
+    } else {
+      return;
     }
 
-    const res = axios.post("http://localhost:8000/api/login", loginForm)
-      .then((response) => {
-        console.log("Login successful:", response.data);
+    setLoader(true);
 
-        const { token } = response.data;
-        localStorage.setItem("authToken", token);
-        window.dispatchEvent(new Event("auth-token-updated"));
-        navigate("/dashboard");
-        // Handle successful login, e.g., store token, redirect, etc.
-      })
-      .catch((error) => {
-        console.error("Login failed:", error.response?.data || error.message);
-        // Handle login failure, e.g., show error message to user
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/login",
+        loginForm,
+      );
+      console.log("Login successful:", response.data);
 
-    console.log(res);
+      const { token } = response.data;
+      localStorage.setItem("authToken", token);
+      window.dispatchEvent(new Event("auth-token-updated"));
+      setLoginError("");
+      setLoader(false);
+      navigate("/dashboard");
+    } catch (error: any) {
+      console.error("Login failed:", error.response?.data || error.message);
+      setLoginError(
+        error.response?.data?.message || "Login failed. Please try again.",
+      );
+      setLoader(false);
+    }
   };
 
   return (
     <section className="login-page">
+      <LoaderOverlay isOpen={loader} message="Login.........." />
       <div className="login-left">
         <div className="left-image-wrap">
           <img src={loginHeroImage} alt="Online class session" />
@@ -113,6 +124,11 @@ function Login() {
           <div className="separator">
             <span>Or continue with email</span>
           </div>
+          {loginError && (
+            <p className="error-message text-center text-red-700">
+              {loginError}!
+            </p>
+          )}
 
           <div className={`field-group ${error ? "field-group-error" : ""}`}>
             <label htmlFor="email">Email</label>

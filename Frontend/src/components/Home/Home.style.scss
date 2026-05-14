@@ -1,0 +1,78 @@
+.home-welcome-strip {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  // background: #f3f4f6;
+  // border: 0.0625rem solid #d7deea;
+  padding: 1.5rem 2rem;
+  margin: 0.25rem 0.375rem 0 0;
+}
+
+.welcome-avatar {
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 999rem;
+  background: #0f172a;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.welcome-copy h2 {
+  margin: 0;
+  color: #2b2d42;
+  font-size: clamp(1.35rem, 2.3vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.welcome-link {
+  margin-top: 0.65rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2563eb;
+  font-size: clamp(1rem, 1.3vw, 1.7rem);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+  cursor: pointer;
+}
+
+@media (max-width: 64rem) {
+  .home-welcome-strip {
+    padding: 1rem 1rem;
+    margin: 0.25rem 0.25rem 0;
+  }
+
+  .welcome-avatar {
+    width: 3.75rem;
+    height: 3.75rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .home-welcome-strip {
+    gap: 0.85rem;
+    padding: 0.875rem 0.75rem;
+  }
+
+  .welcome-avatar {
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.25rem;
+  }
+
+  .welcome-copy h2 {
+    font-size: 1.35rem;
+  }
+
+  .welcome-link {
+    font-size: 0.95rem;
+  }
+}

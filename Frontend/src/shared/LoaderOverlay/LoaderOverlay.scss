@@ -1,0 +1,47 @@
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(0.25rem);
+  -webkit-backdrop-filter: blur(0.25rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding-top: 2.5rem;
+}
+
+.loader-overlay__panel {
+  min-width: 12rem;
+  background: #ffffff;
+  border: 0.0625rem solid #d7deea;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.75rem 1.5rem rgba(15, 23, 42, 0.16);
+  padding: 0.9rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loader-overlay__spinner {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999rem;
+  border: 0.2rem solid #cbd5e1;
+  border-top-color: #2563eb;
+  animation: loader-spin 0.8s linear infinite;
+}
+
+.loader-overlay__message {
+  margin: 0;
+  color: #111827;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
